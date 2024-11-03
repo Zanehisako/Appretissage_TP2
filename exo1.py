@@ -44,7 +44,38 @@ g.add((EX.EnrolledIn, RDF.type, OWL.ObjectProperty))
 g.add((EX.EnrolledIn, RDFS.domain, EX.Student))
 g.add((EX.EnrolledIn, RDFS.range, EX.Teacher))
 #Task2
-g.add((EX.Role, RDF.type, OWL.ObjectProperty))
+g.add((EX.EnrolledIn, RDFS.range, EX.Teacher))
+
+g.add((EX.supervises, RDF.type, OWL.ObjectProperty))
+g.add((EX.supervises, RDFS.subPropertyOf, EX.teaches))
+g.add((EX.supervises, RDFS.domain, EX.Supervisor))
+g.add((EX.supervises, RDFS.range, EX.Student))
+
+g.add((EX.tutors, RDF.type, OWL.ObjectProperty))
+g.add((EX.tutors, RDFS.subPropertyOf, EX.teaches))
+g.add((EX.tutors, RDFS.domain, EX.Tutor))
+g.add((EX.tutors, RDFS.range, EX.Student))
+
+g.add((EX.headOfDepartment, RDF.type, OWL.ObjectProperty))
+g.add((EX.headOfDepartment, RDFS.domain, EX.Department))
+g.add((EX.headOfDepartment, RDFS.range, EX.Staff))
+
+
+g.add((EX.taughtBy, RDF.type, OWL.ObjectProperty))
+g.add((EX.taughtBy, RDFS.domain, EX.Student))
+g.add((EX.taughtBy, RDFS.range, EX.Teacher))
+
+g.add((EX.supervisedBy, RDF.type, OWL.ObjectProperty))
+g.add((EX.supervisedBy, RDFS.domain, EX.Student))
+g.add((EX.supervisedBy, RDFS.range, EX.Supervisor))
+
+#Task3
+
+g.add((EX.Student, OWL.disjointWith, EX.Staff))
+g.add((EX.Undergraduate, OWL.disjointWith, EX.Graduate))
+
+g.add((EX.teaches,OWL.inverseOf,EX.taughtBy))
+g.add((EX.supervises,OWL.inverseOf,EX.supervisedBy))
 
 # Create instances (for Teacher & Student)
 g.add((EX.Ahmed, RDF.type, EX.Teacher))
